@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(myrosbotslam)
+project(description)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -52,12 +52,7 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
-## Generate messages in the 'msg' folder
-add_message_files(
-   FILES
-   two.msg
-#   Message2.msg
-)
+
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -73,17 +68,7 @@ add_message_files(
 #   Action2.action
 # )
 
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  geometry_msgs
-  tf
-  nav_msgs
-  actionlib
-  move_base_msgs
-  #message_generation
-)
+
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -132,27 +117,7 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
 )
-add_library(${PROJECT_NAME}
-  src/test_class1.cpp
-)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
-install(
-  TARGETS ${PROJECT_NAME}
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-)
-install(
-  DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
 
 
-add_executable(mytalker src/mytalker.cpp)
-target_link_libraries(mytalker ${catkin_LIBRARIES})
 
-add_executable(mylistener src/mylistener.cpp)
-target_link_libraries(mylistener ${catkin_LIBRARIES})
 
-add_executable(test_class1 src/test_class1.cpp)
-target_link_libraries(test_class1 ${catkin_LIBRARIES})
